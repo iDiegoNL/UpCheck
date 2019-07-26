@@ -5,10 +5,12 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Rackbeat\UIAvatars\HasAvatar;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use HasAvatar;
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'phone', 'phone_verified', 'password',
     ];
 
     /**
@@ -36,4 +38,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the monitors for the user.
+     */
+    public function monitors()
+    {
+        return $this->hasMany('App\Monitor');
+    }
+
+    /**
+     * Get the user avatar.
+     */
+    public function getAvatar( $size = 64 ) {
+        return $this->getGravatar( $this->email, $size );
+    }
 }

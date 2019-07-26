@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Europe/Amsterdam',
 
     /*
     |--------------------------------------------------------------------------
@@ -173,6 +173,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
+        App\Providers\HorizonServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
     ],
@@ -228,4 +229,10 @@ return [
 
     ],
 
+    'twilio' => [
+        'AUTHY_API_KEY' => env('AUTHY_API_KEY'),
+        'TWILIO_ACCOUNT_SID' => env('TWILIO_ACCOUNT_SID'),
+        'TWILIO_AUTH_TOKEN' => env('TWILIO_AUTH_TOKEN'),
+        'TWILIO_PHONE' => env('TWILIO_PHONE'),
+    ],
 ];
