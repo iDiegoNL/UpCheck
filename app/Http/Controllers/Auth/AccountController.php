@@ -7,6 +7,7 @@ use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Hash;
+use Spatie\PersonalDataExport\Jobs\CreatePersonalDataExportJob;
 
 class AccountController extends Controller
 {
@@ -38,6 +39,10 @@ class AccountController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
+
+        if ($request->phone !== Auth::user()->phone) {
+            $user->phone_verified = false;
+        }
 
         $user->save();
 
@@ -86,6 +91,11 @@ class AccountController extends Controller
 
     public function indexMFA()
     {
-        return view('auth.settings.mfa.index');
+        return view('auth.settings.2fa.index');
+    }
+
+    public function exportPersonalData()
+    {
+        dispatch(new CreatePersonalDataExportJob(Auth::user()));
     }
 }

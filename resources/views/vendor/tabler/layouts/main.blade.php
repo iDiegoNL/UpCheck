@@ -73,13 +73,6 @@
                     </h1>
                 </div>
 
-                @if(flash()->message)
-                    <div class="alert {{ flash()->class }} alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert"></button>
-                        {{ flash()->message }}
-                    </div>
-                @endif
-
                 @yield('content')
             </div>
         </div>

@@ -61,3 +61,11 @@ Route::post('settings/confirm/phone/confirm', 'Auth\PhoneVerificationController@
 
 // 2FA (MFA)
 Route::get('settings/mfa', 'Auth\AccountController@indexMFA')->name('settings.mfa');
+Route::get('/2fa/enable', 'Google2FAController@enableTwoFactor')->name('2fa.enable');
+Route::get('/2fa/disable', 'Google2FAController@disableTwoFactor')->name('2fa.disable');
+Route::get('/2fa/validate', 'Auth\LoginController@getValidateToken')->name('2fa.form');
+Route::post('/2fa/validate', ['middleware' => 'throttle:5', 'uses' => 'Auth\LoginController@postValidateToken'])->name('2fa.validate');
+
+// Personal Data Export
+Route::personalDataExports('personal-data-exports');
+Route::get('settings/export/personaldata', 'Auth\AccountController@exportPersonalData')->name('settings.personaldata');

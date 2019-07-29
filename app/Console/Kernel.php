@@ -24,6 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        $schedule->command('personal-data-export:clean')->daily();
         // $schedule->command('inspire')
         //          ->hourly();
     }

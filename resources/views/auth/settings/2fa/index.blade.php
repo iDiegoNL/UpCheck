@@ -8,17 +8,20 @@
     <div class="row row-cards">
         @include('auth.settings.partials.menu')
         <div class="col-lg-9">
-            @if(Auth::user()->phone_verified == false)
-                <div class="alert alert-icon alert-warning" role="alert">
-                    <i class="fal fa-info-circle fa-fw" aria-hidden="true"></i> To enable Two Factor Authentication, you
-                    first need to confirm your phone number.
-                    <br>
-                    <a href="{{ route('phone.index') }}">Confirm your phone number now.</a>
-                </div>
-            @endif
+            @include('flash::message')
             <div class="card">
+                @if (Auth::user()->google2fa_secret)
+                    <div class="card-status bg-green"></div>
+                @else
+                    <div class="card-status bg-red"></div>
+                @endif
                 <div class="card-header">
-                    <h3 class="card-title">Two-Factor Authentication</h3>
+                    <h3 class="card-title">
+                        Two-Factor Authentication
+                        @if (Auth::user()->google2fa_secret)
+                            (enabled)
+                        @endif
+                    </h3>
                 </div>
                 <div class="card-body">
                     <div class="text-wrap">
@@ -29,8 +32,11 @@
                             cloud
                             and can be restored if you lose access to your device.
                         </p>
-                        <a @if(Auth::user()->phone_verified == false) href="#" @else href="#"
-                           @endif class="btn btn-primary @if(Auth::user()->phone_verified == false) disabled @endif">Enable</a>
+                        @if (Auth::user()->google2fa_secret)
+                            <a href="{{ url('2fa/disable') }}" class="btn btn-danger">Disable</a>
+                        @else
+                            <a href="{{ url('2fa/enable') }}" class="btn btn-primary">Enable</a>
+                        @endif
                     </div>
                     <br>
                     <div class="text-wrap">

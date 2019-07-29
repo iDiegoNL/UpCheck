@@ -50,7 +50,20 @@ class User extends Authenticatable
     /**
      * Get the user avatar.
      */
-    public function getAvatar( $size = 64 ) {
-        return $this->getGravatar( $this->email, $size );
+    public function getAvatar($size = 64)
+    {
+        return $this->getGravatar($this->email, $size);
+    }
+
+    public function selectPersonalData(PersonalDataSelection $personalData): void
+    {
+        $personalData
+            ->add('user.json', ['name' => $this->name, 'email' => $this->email, 'phone' => $this->phone, 'created_at', $this->created_at, 'updated_at', $this->updated_at]);
+    }
+
+    public function personalDataExportName(string $realFilename): string {
+        $userName = Str::slug($this->name);
+
+        return "personal-data-{$userName}.zip";
     }
 }

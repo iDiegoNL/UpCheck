@@ -8,17 +8,18 @@
     <div class="row row-cards">
         @include('auth.settings.partials.menu')
         <div class="col-lg-9">
+            @include('flash::message')
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Confirm your phone number</h3>
                 </div>
                 <div class="card-body">
                     <div class="text-wrap">
-                        <p>
-                            To enable Two Factor Authentication, you first need to confirm your phone number. Please
-                            enter your phone number below so we can send you a verification code.
-                        </p>
                         @if($sent == false)
+                            <p>
+                                To enable Two Factor Authentication, you first need to confirm your phone number. Please
+                                enter your phone number below so we can send you a verification code.
+                            </p>
                             <form method="post" action="{{ route('verify.phone.send') }}">
                                 @csrf
                                 <div class="form-group">
@@ -52,6 +53,19 @@
                                                     <option value="call">Call</option>
                                                 </select>
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Send code</button>
+                            </form>
+                        @else
+                            <form method="post" action="{{ route('verify.phone.code') }}">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="code">Verification Code</label>
+                                            <input type="text" class="form-control" name="code" id="code" placeholder="1234" spellcheck="false" autocomplete="off" required>
                                         </div>
                                     </div>
                                 </div>
