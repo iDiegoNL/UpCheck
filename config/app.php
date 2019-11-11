@@ -39,14 +39,7 @@ return [
     |
     */
 
-    'debug' => value(function(){
-        if ($_SERVER["HTTP_CF_CONNECTING_IP"] == '2001:984:3298:1:820e:1bd0:e4f3:8f1f')
-    {
-        return true;
-    }
-
-    return false;
-}),
+    'debug' => env('APP_DEBUG', 'false'),
 
     'debug_blacklist' => [
         '_ENV' => [
