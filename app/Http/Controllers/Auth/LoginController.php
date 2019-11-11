@@ -10,6 +10,9 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Contracts\Auth\Authenticatable;
 use App\Http\Requests\ValidateSecretRequest;
+use Socialite;
+use App\User;
+use App\SocialIdentity;
 
 class LoginController extends Controller
 {
@@ -70,7 +73,7 @@ class LoginController extends Controller
     public function getValidateToken()
     {
         if (session('2fa:user:id')) {
-            return view('2fa/validate');
+            return view('auth.2fa.validate');
         }
 
         return redirect('login');
@@ -85,7 +88,7 @@ class LoginController extends Controller
     {
         //get user id and create cache key
         $userId = $request->session()->pull('2fa:user:id');
-        $key    = $userId . ':' . $request->totp;
+        $key = $userId . ':' . $request->totp;
 
         //use cache to store token to blacklist
         Cache::add($key, true, 4);
@@ -94,5 +97,70 @@ class LoginController extends Controller
         Auth::loginUsingId($userId);
 
         return redirect()->intended($this->redirectTo);
+    }
+
+    /**
+     * Redirect the user to the socialite provider authentication page.
+     *
+     * @param $provider
+     * @return Response
+     */
+    public function redirectToProvider($provider)
+    {
+        return Socialite::driver($provider)->redirect();
+    }
+
+    /**
+     * Obtain the user information from the socialite provider.
+     *
+     * @param $provider
+     * @return Response
+     */
+    public function handleProviderCallback($provider)
+    {
+        try {
+            $user = Socialite::driver($provider)->user();
+        } catch (Exception $e) {
+            return redirect('/login');
+        }
+
+        $authUser = $this->findOrCreateUser($user, $provider);
+        Auth::login($authUser, true);
+        return redirect($this->redirectTo);
+    }
+
+
+    /**
+     * Find or create the user from the socialite provider
+     *
+     * @param $providerUser
+     * @param $provider
+     * @return Response
+     */
+    public function findOrCreateUser($providerUser, $provider)
+    {
+        $account = SocialIdentity::whereProviderName($provider)
+            ->whereProviderId($providerUser->getId())
+            ->first();
+
+        if ($account) {
+            return $account->user;
+        } else {
+            $user = User::whereEmail($providerUser->getEmail())->first();
+
+            if (!$user) {
+                $user = User::create([
+                    'email' => $providerUser->getEmail(),
+                    'name' => $providerUser->getName(),
+                ]);
+            }
+
+            $user->identities()->create([
+                'provider_id' => $providerUser->getId(),
+                'provider_name' => $provider,
+            ]);
+
+            return $user;
+        }
     }
 }

@@ -1,23 +1,5 @@
 @extends('tabler::layouts.main')
 @section('title', 'UpCheck')
-@push('scripts')
-    <script src="{{ asset('admin/assets/plugins/charts-c3/plugin.js') }}"></script>
-    <script type="text/javascript">
-        require(['c3', 'jquery'], function (c3, $) {
-            $(document).ready(function () {
-                var chart = c3.generate({
-                    bindto: '#chart-employment',
-                    data: {
-                        ...
-                    }
-                });
-            });
-        });
-    </script>
-@endpush
-@push('styles')
-    <link href="{{ asset('admin/assets/plugins/charts-c3/plugin.css') }}" rel="stylesheet"/>
-@endpush
 @section('content')
     <div class="row row-cards">
         @include('monitors.partials.menu')
@@ -32,17 +14,61 @@
                     @else
                         <div class="card-status bg-gray"></div>
                     @endif
-                    <h3 class="card-title">Response Times</h3>
+                    <h3 class="card-title">Response Times ({{ $date }})</h3>
                     <div class="card-options">
-                        <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i
-                                    class="fe fe-chevron-up"></i></a>
-                        <a href="#" class="card-options-fullscreen" data-toggle="card-fullscreen"><i
-                                    class="fe fe-maximize"></i></a>
+                        <a href="#" role="button" class="card-options-history dropdown-toggle" id="historyDropdownMenuButton"
+                           aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">
+                            <i class="fal fa-history fa-fw"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="historyDropdownMenuButton" style="width: 50px">
+                            <a class="dropdown-item" href="#">{{ Carbon\Carbon::today()->toFormattedDateString() }}</a>
+                            <a class="dropdown-item" href="#">{{ Carbon\Carbon::today()->subDay()->toFormattedDateString() }}</a>
+                            <a class="dropdown-item" href="#">{{ Carbon\Carbon::today()->subDays(2)->toFormattedDateString() }}</a>
+                            <a class="dropdown-item" href="#">{{ Carbon\Carbon::today()->subDays(3)->toFormattedDateString() }}</a>
+                            <a class="dropdown-item" href="#">{{ Carbon\Carbon::today()->subDays(4)->toFormattedDateString() }}</a>
+                            <a class="dropdown-item" href="#">{{ Carbon\Carbon::today()->subDays(5)->toFormattedDateString() }}</a>
+                            <a class="dropdown-item" href="#">{{ Carbon\Carbon::today()->subDays(6)->toFormattedDateString() }}</a>
+                            <a class="dropdown-item" href="#"><b>More history</b></a>
+                        </div>
+                        <a href="#" class="card-options-collapse" data-toggle="card-collapse">
+                            <i class="fe fe-chevron-up"></i>
+                        </a>
                         <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
                     </div>
                 </div>
                 <div class="card-body">
-                    <div id="chart-employment" style="height: 16rem"></div>
+                    @if(\App\Ping::where('monitor_id', $id)->where('ms', '>', 0)->count() == 0 && \App\Ping::where('monitor_id', $id)->count() >= 1)
+                        <div class="alert alert-icon alert-primary" role="alert">
+                            <i class="fe fe-info mr-2" aria-hidden="true"></i>
+                            It looks like all ping attempts were unsuccessful.
+                            <br>
+                            Please make sure that you configured your monitor correctly and the service is reachable,
+                            otherwise contact our support.
+                        </div>
+                        <div class="text-center">
+                            <img src="{{ asset('images/graphics/empty.svg') }}" width="350px">
+                            <h3>There aren't any successful response times to show</h3>
+                        </div>
+                    @elseif(\App\Ping::where('monitor_id', $id)->where('ms', '>', 0)->count() == 0 && \App\Ping::where('monitor_id', $id)->count() >= 1 && \App\Monitor::where('user_id', $user_id)->count() > 1)
+                        <div class="text-center">
+                            <img src="{{ asset('images/graphics/empty.svg') }}" width="350px">
+                            <h3>There aren't any successful response times to show</h3>
+                        </div>
+                    @elseif(\App\Ping::where('monitor_id', $id)->where('ms', '>', 0)->count() == 0 && \App\Ping::where('monitor_id', $id)->count() >= 0 && \App\Monitor::where('user_id', $user_id)->count() == 1)
+                        <div class="text-center">
+                            <img src="{{ asset('images/graphics/high_five.svg') }}" width="350px">
+                            <h3 class="mt-5">Congratulations, you successfully added your first monitor!</h3>
+                            <h4 style="font-weight:normal">
+                                Your first ping results will show here within 5 minutes.
+                                <br>
+                                Can't wait?
+                            </h4>
+                            <a href="#" class="btn btn-purple"><i class="fal fa-rocket"></i> Check now</a>
+                        </div>
+                    @else
+                        {!! $chart->container() !!}
+                        {!! $chart->script() !!}
+                    @endif
                 </div>
             </div>
         </div>

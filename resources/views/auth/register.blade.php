@@ -36,6 +36,15 @@
                         @endif
                     </div>
                     <div class="form-group">
+                        <input class="form-control{{ $errors->has('code') ? ' is-invalid' : '' }}" type="text"
+                               name="code" placeholder="Invite Code" required>
+                        @if ($errors->has('code'))
+                            <span class="invalid-feedback">
+                                <strong>{{ $errors->first('code') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group">
                         <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password"
                                name="password" placeholder="Password" required>
                         @if ($errors->has('password'))
@@ -49,7 +58,8 @@
                     </div>
                 </form>
                 <div class="other-links">
-                    <span>Or register with</span><a href="#">Google</a><a href="#">Github</a><a href="#">Twitter</a>
+                    <span>Or register with</span>
+                    @include('auth.partials.socialite')
                 </div>
                 @include('auth.partials.ouch')
             </div>

@@ -5,9 +5,13 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use Auth;
 use App\Http\Controllers\Controller;
+use Doorman;
 use Illuminate\Http\Request;
 use Hash;
+use Illuminate\Support\Facades\DB;
 use Spatie\PersonalDataExport\Jobs\CreatePersonalDataExportJob;
+use GoogleTagManager;
+use Carbon\Carbon;
 
 class AccountController extends Controller
 {
@@ -59,6 +63,11 @@ class AccountController extends Controller
         echo 'export';
     }
 
+    public function exportPersonalData()
+    {
+        dispatch(new CreatePersonalDataExportJob(Auth::user()));
+    }
+
     public function deleteAccount()
     {
         echo 'delete';
@@ -92,10 +101,5 @@ class AccountController extends Controller
     public function indexMFA()
     {
         return view('auth.settings.2fa.index');
-    }
-
-    public function exportPersonalData()
-    {
-        dispatch(new CreatePersonalDataExportJob(Auth::user()));
     }
 }

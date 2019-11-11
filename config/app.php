@@ -39,7 +39,90 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => value(function(){
+        if ($_SERVER["HTTP_CF_CONNECTING_IP"] == '2001:984:3298:1:820e:1bd0:e4f3:8f1f')
+    {
+        return true;
+    }
+
+    return false;
+}),
+
+    'debug_blacklist' => [
+        '_ENV' => [
+            'SCRIPT_FILENAME',
+            'SERVER_SOFTWARE',
+            'APP_KEY',
+            'APP_ENV',
+            'SERVER_ADDR',
+            'DOCUMENT_ROOT',
+            'DB_CONNECTION',
+            'DB_HOST',
+            'DB_PORT',
+            'DB_DATABASE',
+            'DB_USERNAME',
+            'DB_PASSWORD',
+            'REDIS_HOST',
+            'REDIS_PASSWORD',
+            'REDIS_PORT',
+            'QUEUE_CONNECTION',
+            'MAIL_DRIVER',
+            'MAIL_PASSWORD',
+            'MAIL_HOST',
+            'MAIL_PORT',
+            'MAIL_USERNAME',
+            'MAIL_ENCRYPTION',
+            'MAIL_FROM_NAME',
+            'MAIL_FROM_ADDRESS',
+            'PUSHER_APP_KEY',
+            'PUSHER_APP_SECRET',
+            'ALGOLIA_APP_ID',
+            'ALGOLIA_SECRET',
+            'AUTHY_API_KEY',
+            'TWILIO_ACCOUNT_SID',
+            'TWILIO_AUTH_TOKEN',
+            'TWILIO_PHONE',
+            'TWILIO_FROM',
+        ],
+        '_SERVER' => [
+            'SCRIPT_FILENAME',
+            'SERVER_SOFTWARE',
+            'APP_KEY',
+            'APP_ENV',
+            'SERVER_ADDR',
+            'DOCUMENT_ROOT',
+            'DB_CONNECTION',
+            'DB_HOST',
+            'DB_PORT',
+            'DB_DATABASE',
+            'DB_USERNAME',
+            'DB_PASSWORD',
+            'REDIS_HOST',
+            'REDIS_PASSWORD',
+            'REDIS_PORT',
+            'QUEUE_CONNECTION',
+            'MAIL_DRIVER',
+            'MAIL_PASSWORD',
+            'MAIL_HOST',
+            'MAIL_PORT',
+            'MAIL_USERNAME',
+            'MAIL_ENCRYPTION',
+            'MAIL_FROM_NAME',
+            'MAIL_FROM_ADDRESS',
+            'PUSHER_APP_KEY',
+            'PUSHER_APP_SECRET',
+            'ALGOLIA_APP_ID',
+            'ALGOLIA_SECRET',
+            'AUTHY_API_KEY',
+            'TWILIO_ACCOUNT_SID',
+            'TWILIO_AUTH_TOKEN',
+            'TWILIO_PHONE',
+            'TWILIO_FROM',
+        ],
+        '_POST' => [
+            'password',
+        ],
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -67,7 +150,7 @@ return [
     |
     */
 
-    'timezone' => 'Europe/Amsterdam',
+    'timezone' => 'UTC',
 
     /*
     |--------------------------------------------------------------------------
@@ -165,7 +248,8 @@ return [
         /*
          * Package Service Providers...
          */
-        PragmaRX\Google2FA\Vendor\Laravel\ServiceProvider::class,
+        PragmaRX\Google2FALaravel\ServiceProvider::class,
+        Clarkeash\Doorman\Providers\DoormanServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -174,8 +258,8 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
-        App\Providers\HorizonServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\HorizonServiceProvider::class,
 
     ],
 
@@ -227,7 +311,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Google2FA' => PragmaRX\Google2FA\Vendor\Laravel\Facade::class,
+        'Google2FA' => PragmaRX\Google2FALaravel\Facade::class,
+        'Doorman' => Clarkeash\Doorman\Facades\Doorman::class,
 
     ],
 

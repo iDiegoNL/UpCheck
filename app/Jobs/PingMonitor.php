@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use Exception;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -37,6 +38,7 @@ class PingMonitor implements ShouldQueue
      *
      * @param Monitor $monitor
      * @return void
+     * @throws Exception
      */
     public function handle()
     {

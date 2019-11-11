@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\Request;
 use Lavary\Menu\Facade as Menu;
 
 class DefineMenus
@@ -10,8 +11,8 @@ class DefineMenus
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Closure $next
+     * @param Request $request
+     * @param Closure $next
      * @return mixed
      */
     public function handle($request, Closure $next)
@@ -21,8 +22,10 @@ class DefineMenus
                 ->prepend('<i class="far fa-home"></i> ');
             $menu->add('Monitors', 'monitors')
                 ->prepend('<i class="far fa-server"></i> ');
-            $menu->add('Services', 'services');
-            $menu->add('Contact', 'contact');
+            $menu->add('Status Pages', 'monitors')
+                ->prepend('<i class="far fa-browser"></i> ');
+            $menu->add('Admin', 'admin/users')
+                ->prepend('<i class="far fa-crown"></i> ');
         });
 
         return $next($request);

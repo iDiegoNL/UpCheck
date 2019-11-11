@@ -11,23 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@home')->name('home');
 
 Auth::routes();
 
-Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
+Route::get('/test/forceping', 'TestController@forcePing');
 Route::get('/test', 'TestController@test')->name('test');
-
-Route::get('/home', function () {
-    return redirect('dashboard');
-});
 
 Route::get('/logout', function () {
     Auth::logout();
-    return Redirect::to('login');
+    return redirect(route('login'));
 });
 
 Route::resource('monitors', 'MonitorController');
@@ -69,3 +64,21 @@ Route::post('/2fa/validate', ['middleware' => 'throttle:5', 'uses' => 'Auth\Logi
 // Personal Data Export
 Route::personalDataExports('personal-data-exports');
 Route::get('settings/export/personaldata', 'Auth\AccountController@exportPersonalData')->name('settings.personaldata');
+
+// Socialite
+Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');
+
+// Beginning of the admin routes
+// Invites
+Route::get('admin/invites', 'Admin\InvitesController@indexInvites')->name('admin.invites');
+Route::post('admin/invites/add', 'Admin\InvitesController@addInvite')->name('admin.invites.add');
+Route::get('admin/invites/invite/remove/{id}', 'Admin\InvitesController@removeInvite')->name('admin.invites.remove');
+Route::get('admin/invites/invite/removeall', 'Admin\InvitesController@removeAllInvites')->name('admin.invites.remove.all');
+
+// Roles
+Route::resource('admin/roles', 'Admin\RoleController');
+
+// Users
+Route::resource('admin/users', 'Admin\UserController');
+// End of the admin routes

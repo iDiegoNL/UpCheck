@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('auth/css/iofrm-style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('auth/css/iofrm-theme6.css') }}">
+    <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css') }}">
 </head>
 <body>
 <div class="form-body">
@@ -15,9 +16,9 @@
         @yield('content')
     </div>
 </div>
-<script type="text/javascript" src="{{ asset('auth/js/jquery.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('auth/js/popper.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('auth/js/bootstrap.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('auth/js/main.js') }}"></script>
+<script type="text/javascript" async defer src="{{ asset('auth/js/jquery.min.js') }}"></script>
+<script type="text/javascript" async defer src="{{ asset('auth/js/popper.min.js') }}"></script>
+<script type="text/javascript" async defer src="{{ asset('auth/js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" async defer src="{{ asset('auth/js/main.js') }}"></script>
 </body>
 </html>

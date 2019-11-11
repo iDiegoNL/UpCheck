@@ -1,5 +1,20 @@
 @extends('tabler::layouts.main')
 @section('title', 'UpCheck')
+@push('scripts')
+    <script>
+        var domain = document.getElementById("domain");
+        domain.oninput = function () {
+            document.getElementById("ip").disabled = this.value != "";
+            document.getElementById("ip").value = '';
+        };
+
+        var ip = document.getElementById("ip");
+        ip.oninput = function () {
+            document.getElementById("domain").disabled = this.value != "";
+            document.getElementById("domain").value = '';
+        };
+    </script>
+@endpush
 @section('content')
     <div class="row row-cards">
         @include('monitors.partials.menu')
@@ -22,6 +37,7 @@
                     <h3 class="card-title">Edit Monitor</h3>
                 </div>
                 @csrf
+                @method('PATCH')
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-6 col-md-6">
@@ -95,7 +111,7 @@
                             <div class="form-group">
                                 <label class="form-label">Server IP</label>
                                 <input type="text" class="form-control" name="ip" id="ip" placeholder="1.1.1.1"
-                                       aria-describedby="IPHelpBlock" spellcheck="false" value="{{ $domain }}">
+                                       aria-describedby="IPHelpBlock" spellcheck="false" value="{{ $ip }}">
                                 <small id="IPHelpBlock" class="form-text text-muted">
                                     IPv4
                                 </small>
@@ -131,7 +147,7 @@
                 <div class="card-footer text-right">
                     <div class="d-flex">
                         <a href="{{ route('monitors.index') }}" class="btn btn-link">Cancel</a>
-                        <button type="submit" class="btn btn-primary ml-auto">Create Monitor</button>
+                        <button type="submit" class="btn btn-primary ml-auto">Save</button>
                     </div>
                 </div>
             </form>

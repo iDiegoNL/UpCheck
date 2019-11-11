@@ -6,10 +6,12 @@ use App\Monitor;
 use App\Ping;
 use Artisan;
 use Auth;
+use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\App;
 use JJG\Ping as JJGPing;
-use App\Notifications\MonitorDown;
+use App\Notifications\MonitorOffline;
+use App\Notifications\MonitorOnline;
 use App\User;
 
 class MonitorPingCommand extends Command
@@ -43,6 +45,7 @@ class MonitorPingCommand extends Command
      * Execute the console command.
      *
      * @return mixed
+     * @throws Exception
      */
     public function handle()
     {
@@ -56,6 +59,7 @@ class MonitorPingCommand extends Command
         //Store the micro time so that we know when our script started to run.
         $executionStartTime = microtime(true);
         foreach ($monitors as $monitor) {
+            $user = User::find($monitor->user_id);
             $executionStartTime1 = microtime(true);
             // Define the host ($host equals two variables, but one is NULL since you can't have an IP and domain)
             $host = $monitor->domain . $monitor->ip;
@@ -89,7 +93,8 @@ class MonitorPingCommand extends Command
                 $this->line('');
                 $this->info('Average ping: ' . $average);
                 if (Monitor::find($monitor->id)->value('status') == 'offline') {
-                    // Send a notification that the monitor is back online (soonTM)
+                    $user = User::find($monitor->user_id);
+                    $user->notify(new MonitorOnline($monitor));
                 }
                 Ping::create([
                     'monitor_id' => $monitor->id,
@@ -109,15 +114,13 @@ class MonitorPingCommand extends Command
                 Ping::create([
                     'monitor_id' => $monitor->id,
                     'user_id' => $monitor->user_id,
-                    'ping' => 0
+                    'ms' => 0
                 ]);
                 // If the last ping was successful (aka online)
                 if (Monitor::find($monitor->id)->value('status') == 'online') {
-                    $user = User::find(Auth::id());
-                    $user->notify(new MonitorDown($monitor));
+                    $user = User::find($monitor->user_id);
+                    $user->notify(new MonitorOffline($monitor));
                 }
-                $user = User::find($monitor->user_id);
-                $user->notify(new MonitorDown($monitor));
             }
             // End the first part of the progress bar.
             $executionEndTime1 = microtime(true);

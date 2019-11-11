@@ -678,49 +678,6 @@ html, body {
     margin-right: 0;
 }
 
-.form-content .other-links a i {
-    display: inline-block;
-    width: 25px;
-    height: 25px;
-    background-color: #000;
-    color: #fff;
-    border-radius: 25px;
-    text-align: center;
-    padding-top: 5px;
-    font-size: 15px;
-    margin: 0 5px;
-    -webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-}
-
-.form-content .other-links a i[class*="fa-twitter"] {
-    background-color: #00aced;
-}
-
-.form-content .other-links a i[class*="fa-facebook"] {
-    background-color: #3b5998;
-}
-
-.form-content .other-links a i[class*="fa-youtube"] {
-    background-color: #bb0000;
-}
-
-.form-content .other-links a i[class*="fa-google"] {
-    background-color: #dd4b39;
-}
-
-.form-content .other-links a i[class*="fa-linkedin"] {
-    background-color: #007bb6;
-}
-
-.form-content .other-links a i[class*="fa-instagram"] {
-    background-color: #517fa4;
-}
-
-.form-content .other-links a i:hover, .form-content .other-links a i:focus {
-    opacity: 0.8;
-}
-
 .form-content.form-sm input, .form-content.form-sm .dropdown-toggle.btn-default {
     padding: 6px 16px;
     margin-bottom: 10px;

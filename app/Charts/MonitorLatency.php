@@ -2,7 +2,7 @@
 
 namespace App\Charts;
 
-use ConsoleTVs\Charts\Classes\C3\Chart;
+use ConsoleTVs\Charts\Classes\Highcharts\Chart;
 
 class MonitorLatency extends Chart
 {

@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Jobs\CheckPingTimes;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -24,9 +25,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('personal-data-export:clean')->daily();
-        // $schedule->command('inspire')
-        //          ->hourly();
+        // $schedule->command('personal-data-export:clean')->daily();
+        // $schedule->job(new CheckPingTimes)->everyMinute();
+        $schedule->command('ping:check')->everyMinute();
     }
 
     /**

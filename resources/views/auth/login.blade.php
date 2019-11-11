@@ -37,6 +37,11 @@
                         @endif
                     </div>
 
+                    <div class="form-group">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Remember me</label>
+                    </div>
+
                     <div class="form-button">
                         <button id="submit" type="submit" class="ibtn">Login</button>
                     </div>
@@ -44,7 +49,8 @@
                 <div class="other-links">
                     <span><a href="{{ route('password.request') }}">Forgot your password?</a></span>
                     <br>
-                    <span>Or login with</span><a href="#">Google</a><a href="#">Github</a><a href="#">Twitter</a>
+                    <span>Or login&nbsp;&nbsp;with</span>
+                    @include('auth.partials.socialite')
                 </div>
                 @include('auth.partials.ouch')
             </div>
