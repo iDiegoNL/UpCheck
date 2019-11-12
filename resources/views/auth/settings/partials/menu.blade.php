@@ -15,7 +15,7 @@
             <a href="{{ route('settings.password') }}" class="list-group-item list-group-item-action d-flex align-items-center {{ (request()->is('settings/password')) ? 'active' : '' }}">
                 <span class="icon mr-3"><i class="fal fa-key"></i></span>Change Password
             </a>
-            <a href="{{ route('settings.mfa') }}" class="list-group-item list-group-item-action d-flex align-items-center {{ (request()->is('2fa/*')) ? 'active' : '' }}">
+            <a href="{{ route('settings.mfa') }}" class="list-group-item list-group-item-action d-flex align-items-center {{ (request()->is('settings/mfa')) ? 'active' : '' }}">
                 <span class="icon mr-3"><i class="far fa-fingerprint"></i></span>Two-Factor Authentication
             </a>
 
