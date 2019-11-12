@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Clarkeash\Doorman\Validation\DoormanRule;
+use Doorman;
 
 class RegisterController extends Controller
 {
