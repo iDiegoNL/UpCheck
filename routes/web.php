@@ -67,7 +67,11 @@ Route::get('settings/export/personaldata', 'Auth\AccountController@exportPersona
 
 // Socialite
 Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
-Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');
+Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+
+// Servers
+Route::get('/servers', 'ServerController@index')->name('servers.index');
+Route::delete('/server/{id}', 'ServerController@destroy')->name('servers.destroy');
 
 // Beginning of the admin routes
 // Invites

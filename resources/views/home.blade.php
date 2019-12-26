@@ -1,287 +1,345 @@
 @extends('layouts.home')
 @section('content')
-    <section class="text-center">
+    <section class="bg-light pb-0 o-hidden">
         <div class="container">
-            <div class="row">
-                <div class="col-md-12" style="word-break: break-word">
-                    <h1>Hi there, we're
-                        <span class="color--primary">{{ config('app.name', 'Laravel') }}.</span>
-                        <br class="hidden-xs hidden-sm"/> We provide simple and reliable uptime monitoring.</h1>
-                    <a class="btn btn--primary btn--lg type--uppercase" href="#">
-                                <span class="btn__text">
-                                    Get Started FREE
-                                </span>
-                    </a>
-                    <span class="block type--fine-print">
-                                Or request a FREE
-                                <a href="#">product demonstration</a>
-                            </span>
-                </div>
-            </div>
-            <!--end of row-->
-        </div>
-        <!--end of container-->
-    </section>
-    <section class="text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-lg-9">
-                    <div class="bg--dark box-shadow-wide">
-                        <img alt="Image" src="img/software-1.jpg"/>
-                    </div>
-                </div>
-            </div>
-            <!--end of row-->
-        </div>
-        <!--end of container-->
-    </section>
-    <section class="border--bottom space--xxs ">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <div class="modal-instance">
-                        <a class="btn type--uppercase modal-trigger" href="#">
-                                    <span class="btn__text">
-                                        &#9654; Watch Overview
-                                    </span>
-                        </a>
-                        <div class="modal-container">
-                            <div class="modal-content bg-dark" data-width="60%" data-height="60%">
-                                <iframe data-src="https://www.youtube.com/embed/6p45ooZOOPo?autoplay=1"
-                                        allowfullscreen="allowfullscreen"></iframe>
-                            </div>
-                            <!--end of modal-content-->
+            <div class="row align-items-center justify-content-center justify-content-lg-between text-center text-lg-left">
+                <div class="col-md-9 col-lg-6 col-xl-5 mb-4 mb-lg-0 pr-lg-5 pr-xl-0">
+                    <div data-aos="fade-in" data-aos-delay="250">
+                        <h1 class="display-3">
+                            <mark data-aos="highlight-text" data-aos-delay="500">Save time</mark>
+                            with UpCheck
+                        </h1>
+                        <p class="lead">
+                            UpCheck provides easy to use and reliable monitoring for all your services.
+                        </p>
+                        <div class="d-flex flex-column flex-sm-row mt-4 mt-md-5 justify-content-center justify-content-lg-start aos-init aos-animate"
+                             data-aos="fade-right" data-aos-delay="300">
+                            <a href="#" class="btn btn-primary btn-lg mx-sm-2 mx-lg-0 mr-lg-2 my-1 my-sm-0">Explore
+                                Features</a>
+                            <a href="{{ route('register') }}"
+                               class="btn btn-outline-primary btn-lg mx-sm-2 mx-lg-0 mr-lg-2 my-1 my-sm-0">Get Started</a>
                         </div>
-                        <!--end of modal-container-->
                     </div>
-                    <!--end of modal instance-->
-                    <span class="block--xs">and see how Stack makes building your site fun</span>
+                </div>
+                <div class="col-md-9 col-lg-6" data-aos="fade-left">
+                    <img src="https://res.cloudinary.com/upcheck/image/upload/v1577379995/graphics/data-trends_lzs3ny.svg" alt="Image"
+                         class="img-fluid">
                 </div>
             </div>
-            <!--end of row-->
         </div>
-        <!--end of container-->
     </section>
-    <section class="switchable bg--secondary">
+    <section class="bg-light pb-0 pt-5">
         <div class="container">
-            <div class="row justify-content-around">
-                <div class="col-md-6 col-lg-5 mt--2">
-                    <ul class="accordion accordion-2 accordion--oneopen">
-                        <li class="active">
-                            <div class="accordion__title">
-                                <span class="h5">Code Quality</span>
-                            </div>
-                            <div class="accordion__content">
-                                <p class="lead">
-                                    Stack follows the BEM naming convention that focusses on logical code readability
-                                    that is reflected in both the HTML and CSS. Interactive elements such as accordions
-                                    and tabs follow the same markup patterns making rapid development easier for
-                                    developers and beginners alike.
-                                </p>
-                            </div>
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <ul class="list-unstyled d-flex flex-wrap justify-content-center mb-0">
+                        <li class="my-3 mx-3 mx-lg-4">
+                            <img src="assets/img/logos/brand/aven.svg" alt="Aven company logo" class="opacity-50"
+                                 data-inject-svg>
                         </li>
-                        <li>
-                            <div class="accordion__title">
-                                <span class="h5">Visual Design</span>
-                            </div>
-                            <div class="accordion__content">
-                                <p class="lead">
-                                    Stack offers a clean and contemporary to suit a range of purposes from corporate,
-                                    tech startup, marketing site to digital storefront. Elements have been designed to
-                                    showcase content in a diverse yet consistent manner.
-                                </p>
-                                <p class="lead">
-                                    Multiple font and colour scheme options mean that dramatically altering the look of
-                                    your site is just clicks away &mdash; Customizing your site in the included Variant
-                                    Page Builder makes experimenting with styles and content arrangements dead simple.
-                                </p>
-                            </div>
+                        <li class="my-3 mx-3 mx-lg-4">
+                            <img src="assets/img/logos/brand/asgardia.svg" alt="Asgardia company logo" class="opacity-50"
+                                 data-inject-svg>
                         </li>
-                        <li>
-                            <div class="accordion__title">
-                                <span class="h5">Stack Experience</span>
-                            </div>
-                            <div class="accordion__content">
-                                <p class="lead">
-                                    Medium Rare is an elite author known for offering high-quality, high-value products
-                                    backed by timely and personable support. Recognised and awarded by Envato on
-                                    multiple occasions for producing consistently outstanding products, it's no wonder
-                                    over 20,000 customers enjoy using Medium Rare templates.
-                                </p>
-                            </div>
+                        <li class="my-3 mx-3 mx-lg-4">
+                            <img src="assets/img/logos/brand/kanba.svg" alt="Kanba company logo" class="opacity-50"
+                                 data-inject-svg>
+                        </li>
+                        <li class="my-3 mx-3 mx-lg-4">
+                            <img src="assets/img/logos/brand/treva.svg" alt="Treva company logo" class="opacity-50"
+                                 data-inject-svg>
+                        </li>
+                        <li class="my-3 mx-3 mx-lg-4">
+                            <img src="assets/img/logos/brand/ztos.svg" alt="Ztos company logo" class="opacity-50"
+                                 data-inject-svg>
                         </li>
                     </ul>
-                    <!--end accordion-->
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="slider box-shadow-wide border--round" data-paging="true">
-                        <ul class="slides">
-                            <li>
-                                <img alt="img" src="img/software-2.jpg"/>
-                            </li>
-                            <li>
-                                <img alt="img" src="img/software-3.jpg"/>
-                            </li>
-                            <li>
-                                <img alt="img" src="img/software-4.jpg"/>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </div>
-            <!--end of row-->
         </div>
-        <!--end of container-->
+        <div class="divider divider-bottom bg-white mt-5"></div>
     </section>
-    <section class="bg--secondary">
+    <section class="o-hidden">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="feature">
-                        <i class="icon icon-Sidebar-Window color--primary"></i>
-                        <h4>Instant Alerts</h4>
-                        <p>
-                            Get notified as soon as your monitor goes down
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="feature">
-                        <i class="icon icon-Duplicate-Window color--primary"></i>
-                        <h4>Invite Teammates</h4>
-                        <p>
-                            Invite your teammates to share monitors and alerts
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="feature">
-                        <i class="icon icon-Code-Window color--primary"></i>
-                        <h4>Customizable Checks</h4>
-                        <p>
-                            It doesn't matter if you want to monitor a MySQL server or monitor HTTP responses, you can customize the check method.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!--end of row-->
-        </div>
-        <!--end of container-->
-    </section>
-    <section class=" bg--dark">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="slider slider--inline-arrows" data-arrows="true">
-                        <ul class="slides">
-                            <li>
-                                <div class="testimonial row justify-content-center">
-                                    <div class="col-lg-2 col-md-4 col-6 text-center">
-                                        <img class="testimonial__image" alt="Image" src="img/avatar-round-1.png"/>
-                                    </div>
-                                    <div class="col-lg-7 col-md-8 col-12">
-                                                <span class="h3">&ldquo;We’ve been using Stack to prototype designs quickly and efficiently. Needless to say we’re hugely impressed by the style and value.&rdquo;
-                                                </span>
-                                        <h5>Maguerite Holland</h5>
-                                        <span>Interface Designer &mdash; Yoke</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="testimonial row justify-content-center">
-                                    <div class="col-lg-2 col-md-4 col-6 text-center">
-                                        <img class="testimonial__image" alt="Image" src="img/avatar-round-4.png"/>
-                                    </div>
-                                    <div class="col-lg-7 col-md-8 col-12">
-                                                <span class="h3">&ldquo;I've been using Medium Rare's templates for a couple of years now and Stack is without a doubt their best work yet. It's fast, performant and absolutely stunning.&rdquo;
-                                                </span>
-                                        <h5>Lucas Nguyen</h5>
-                                        <span>Freelance Designer</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="testimonial row justify-content-center">
-                                    <div class="col-lg-2 col-md-4 col-6 text-center">
-                                        <img class="testimonial__image" alt="Image" src="img/avatar-round-3.png"/>
-                                    </div>
-                                    <div class="col-lg-7 col-md-8 col-12">
-                                                <span class="h3">&ldquo;Variant has been a massive plus for my workflow &mdash; I can now get live mockups out in a matter of hours, my clients really love it.&rdquo;
-                                                </span>
-                                        <h5>Rob Vasquez</h5>
-                                        <span>Interface Designer &mdash; Yoke</span>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!--end of row-->
-        </div>
-        <!--end of container-->
-    </section>
-    <section class="switchable switchable--switch space--md">
-        <div class="container">
-            <div class="row justify-content-around">
-                <div class="col-md-6 col-lg-5">
-                    <span class="h1">Get started in just 5 seconds</span>
-                    <p class="lead">Start building a beautiful site for your startup &mdash;
-                        <br class="hidden-xs hidden-sm"/> right in the comfort of your browser.</p>
-                    <hr class="short">
-                    <form>
-                        <div class="row">
-                            <div class="col-12">
-                                <input type="email" name="Email Address" placeholder="Email Address"/>
-                            </div>
-                            <div class="col-12">
-                                <input type="password" name="Password" placeholder="Password"/>
-                            </div>
-                            <div class="col-12">
-                                <button type="submit" class="btn btn--primary type--uppercase">Create Account</button>
-                            </div>
-                            <div class="col-12">
-                                        <span class="type--fine-print">By signing up, you agree to our
-                                            <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
-                                        </span>
+            <div class="row align-items-center justify-content-around text-center text-lg-left">
+                <div class="col-md-9 col-lg-6 col-xl-5 mb-4 mb-md-5 mb-lg-0 pl-lg-5 pl-xl-0">
+                    <div>
+                        <div class="alert bg-secondary rounded-lg d-inline-block mb-4">
+                            <div class="d-flex align-items-center">
+                                <div class="badge badge-pill badge-success">New</div>
+                                <div class="mx-3">WhatsApp Notifications</div>
                             </div>
                         </div>
-                        <!--end row-->
+                        <h3 class="h1">Status notifications</h3>
+                        <p class="lead">
+                            When your monitored service goes offline or has an issue, you will instantly receive a
+                            notification to your enabled notification methods.
+                        </p>
+                        <a href="#" class="lead">Explore More</a>
+                    </div>
+                </div>
+                <div class="col-md-9 col-lg-6 col-xl-5">
+                    <img src="https://res.cloudinary.com/upcheck/image/upload/v1577379993/graphics/notify_kcmd6j.svg" alt="Notifications" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="o-hidden p-0">
+        <div class="container">
+            <div class="row align-items-center justify-content-around text-center text-lg-left">
+                <div class="col-md-9 col-lg-6 col-xl-5 mb-4 mb-md-5 mb-lg-0 order-lg-2 pl-lg-5 pl-xl-0">
+                    <div>
+                        <h2 class="h1">Simple and reliable monitoring</h2>
+                        <p class="lead">
+                            UpCheck provides advanced monitoring methods like SSL and domain
+                            expiration checks and more to suit your needs.
+                        </p>
+                    </div>
+                    <div class="d-flex flex-wrap justify-content-center justify-content-lg-start">
+                        <div class="mb-3 mr-4 ml-lg-0 mr-lg-4" data-aos="fade-left" data-aos-delay="100">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-lock fa-fw"></i>
+                                <h6 class="mb-0 ml-3">SSL Monitoring</h6>
+                            </div>
+                        </div>
+                        <div class="mb-3 mr-4 ml-lg-0 mr-lg-4" data-aos="fade-left" data-aos-delay="100">
+                            <div class="d-flex align-items-center">
+                                <i class="far fa-globe fa-fw"></i>
+                                <h6 class="mb-0 ml-3">Domain Expiration Monitoring</h6>
+                            </div>
+                        </div>
+                        <div class="mb-3 mr-4 ml-lg-0 mr-lg-4" data-aos="fade-left" data-aos-delay="100">
+                            <div class="d-flex align-items-center">
+                                <i class="far fa-stopwatch fa-fw"></i>
+                                <h6 class="mb-0 ml-3">Uptime Monitoring</h6>
+                            </div>
+                        </div>
+                        <div class="mb-3 mr-4 ml-lg-0 mr-lg-4" data-aos="fade-left" data-aos-delay="100">
+                            <div class="d-flex align-items-center">
+                                <i class="far fa-link fa-fw"></i>
+                                <h6 class="mb-0 ml-3">Broken Link Monitoring</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9 col-lg-6 col-xl-5 order-lg-1">
+                    <img src="https://res.cloudinary.com/upcheck/image/upload/v1577379993/graphics/inspiration_kupjkh.svg" alt="Inspiration" class="img-fluid">
+                </div>
+            </div>
+        </div>
+        <div class="divider divider-bottom bg-light"></div>
+    </section>
+    <section class="bg-light">
+        <div class="container">
+            <div class="row section-title justify-content-center text-center">
+                <div class="col-md-9 col-lg-8 col-xl-7">
+                    <h3 class="display-4">
+                        <mark data-aos='highlight-text' data-aos-delay='500'>Do more</mark>
+                        with UpCheck
+                    </h3>
+                    <div class="lead">
+                        UpCheck offers almost all features for free.
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col d-flex flex-wrap justify-content-center">
+                    <div class="m-2">
+                        <div class="media rounded align-items-center pl-3 pr-4 pl-md-4 pr-md-5 py-2 bg-white">
+                            <i class="far fa-bolt">&nbsp;&nbsp;</i>
+                            <h5 class="mb-0">Instant Notifications</h5>
+                        </div>
+                    </div>
+                    <div class="m-2">
+                        <div class="media rounded align-items-center pl-3 pr-4 pl-md-4 pr-md-5 py-2 bg-white">
+                            <i class="far fa-tags">&nbsp;&nbsp;</i>
+                            <h5 class="mb-0">Multiple Ping Methods</h5>
+                        </div>
+                    </div>
+                    <div class="m-2">
+                        <div class="media rounded align-items-center pl-3 pr-4 pl-md-4 pr-md-5 py-2 bg-white">
+                            <i class="far fa-chart-bar">&nbsp;&nbsp;</i>
+                            <h5 class="mb-0">Advanced Statistics</h5>
+                        </div>
+                    </div>
+                    <div class="m-2">
+                        <div class="media rounded align-items-center pl-3 pr-4 pl-md-4 pr-md-5 py-2 bg-white">
+                            <i class="far fa-file-certificate fa-fw">&nbsp;&nbsp;</i>
+                            <h5 class="mb-0">SSL Monitoring</h5>
+                        </div>
+                    </div>
+                    <div class="m-2">
+                        <div class="media rounded align-items-center pl-3 pr-4 pl-md-4 pr-md-5 py-2 bg-white">
+                            <i class="far fa-file-alt fa-fw">&nbsp;&nbsp;</i>
+                            <h5 class="mb-0">Public Status Pages</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="o-hidden bg-primary text-white">
+        <div class="container">
+            <div class="row align-items-center justify-content-around text-center text-lg-left">
+                <div class="col-md-9 col-lg-6 col-xl-5 mb-4 mb-lg-0 pr-lg-5 pr-xl-0 order-lg-2">
+                    <div>
+                        <h2 class="display-4">
+                            Mobile app available
+                        </h2>
+                        <p class="lead">
+                            UpCheck has the option to use our dashboard as an app on your mobile devices, but isn't
+                            available on the App/Play Store.
+                        </p>
+                        <div class="d-flex flex-column flex-sm-row mt-4 mt-md-5 justify-content-center justify-content-lg-start">
+                            <a onclick="prompt.open()" class="mr-2" title="Launch as Progressive Web App">
+                                <img alt="Progressive Web App"
+                                     src="https://res.cloudinary.com/upcheck/image/upload/v1577380314/graphics/pwa-button_rfwfw1.png"
+                                     width="200px">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg order-lg-1">
+                    <div class="row justify-content-center" data-jarallax-element="-50"
+                         style="position: relative; z-index: 0; transform: translate3d(0px, 8.42691px, 0px);">
+                        <div class="col-10 col-sm-8 col-md-6 col-lg-8 col-xl-6">
+                            <img class="img-fluid position-relative" src="https://res.cloudinary.com/upcheck/image/upload/v1577378910/mockups/upcheck-mockup_fqxw2g.png"
+                                 alt="Screenshot">
+                            <div class="h-50 w-50 position-absolute bottom left d-none d-lg-block"
+                                 data-jarallax-element="-50"
+                                 style="z-index: 0; transform: translate3d(0px, 57.1129px, 0px);">
+                                <div class="blob blob-2 w-100 h-100 bg-primary-2 opacity-90 top right"></div>
+                                <div id="jarallax-container-4"
+                                     style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; pointer-events: none; z-index: -100;">
+                                    <div style="position: absolute;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="jarallax-container-3"
+                             style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; pointer-events: none; z-index: -100;">
+                            <div style="position: fixed;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row section-title justify-content-center text-center">
+                <div class="col-md-9 col-lg-8 col-xl-7">
+                    <h3 class="display-4">Boost your monitoring</h3>
+                    <div class="lead">Get started immediately, no credit card required</div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-xl-5 col-lg-6 col-md-7">
+                    <form class="d-flex flex-column flex-md-row">
+                        <input class="form-control form-control-lg h-100" type="email" name="get-started-email"
+                               placeholder="Email Address">
+                        <button class="btn btn-lg btn-primary mt-2 mt-md-0 ml-md-3 flex-shrink-0" type="submit">Get
+                            Started
+                        </button>
                     </form>
-                </div>
-                <div class="col-md-6 col-lg-5">
-                    <img alt="Image" class="border--round" src="{{ asset('images/graphics/register.svg') }}"/>
+                    <div class="mt-3 text-center text-small text-muted">
+                        Free forever. We promise.
+                    </div>
                 </div>
             </div>
-            <!--end of row-->
         </div>
-        <!--end of container-->
     </section>
-    <section class="text-center bg--secondary space--xs">
+
+    <footer class="bg-primary-3 text-white links-white pb-4 footer-1">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <ul class="list-inline list-inline--images">
-                        <li>
-                            <img alt="Image" src="img/partner-1.png"/>
+                <div class="col-xl-auto mr-xl-5 col-md-3 mb-4 mb-md-0">
+                    <h5>Services</h5>
+                    <ul class="nav flex-row flex-md-column">
+                        <li class="nav-item mr-3 mr-md-0">
+                            <a href="#" class="nav-link fade-page px-0 py-2">Uptime Monitoring</a>
                         </li>
-                        <li>
-                            <img alt="Image" src="img/partner-5.png"/>
+                        <li class="nav-item mr-3 mr-md-0">
+                            <a href="#" class="nav-link fade-page px-0 py-2">Status Pages</a>
                         </li>
-                        <li>
-                            <img alt="Image" src="img/partner-7.png"/>
+                        <li class="nav-item mr-3 mr-md-0">
+                            <a href="#" class="nav-link fade-page px-0 py-2">SSL Monitoring</a>
                         </li>
-                        <li>
-                            <img alt="Image" src="img/partner-4.png"/>
+                        <li class="nav-item mr-3 mr-md-0">
+                            <a href="#" class="nav-link fade-page px-0 py-2">Domain Expiration Monitoring</a>
                         </li>
-                        <li>
-                            <img alt="Image" src="img/partner-6.png"/>
+                        <li class="nav-item mr-3 mr-md-0">
+                            <a href="#" class="nav-link fade-page px-0 py-2">Broken Link Monitoring</a>
+                        </li>
+                        <li class="nav-item mr-3 mr-md-0">
+                            <a href="#" class="nav-link fade-page px-0 py-2">Pricing</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xl-auto mr-xl-5 col-md-3">
+                    <h5>Company</h5>
+                    <ul class="nav flex-row flex-md-column">
+                        <li class="nav-item mr-3 mr-md-0">
+                            <a href="#" class="nav-link fade-page px-0 py-2">About</a>
+                        </li>
+                        <li class="nav-item mr-3 mr-md-0">
+                            <a href="#" class="nav-link fade-page px-0 py-2">Locations</a>
+                        </li>
+                        <li class="nav-item mr-3 mr-md-0">
+                            <a href="#" class="nav-link fade-page px-0 py-2">Terms of Service</a>
+                        </li>
+                        <li class="nav-item mr-3 mr-md-0">
+                            <a href="#" class="nav-link fade-page px-0 py-2">Privacy Policy</a>
+                        </li>
+                        <li class="nav-item mr-3 mr-md-0">
+                            <a href="#" class="nav-link fade-page px-0 py-2">Press Kit</a>
+                        </li>
+                        <li class="nav-item mr-3 mr-md-0">
+                            <a href="#" class="nav-link fade-page px-0 py-2">GDPR</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xl-auto mr-xl-5 col-md-3">
+                    <h5>Support</h5>
+                    <ul class="nav flex-row flex-md-column">
+                        <li class="nav-item mr-3 mr-md-0">
+                            <a href="{!! url(config('tabler.urls.knowledgebase')) !!}" class="nav-link fade-page px-0 py-2">Knowledge
+                                base</a>
+                        </li>
+                        <li class="nav-item mr-3 mr-md-0">
+                            <a href="#" class="nav-link fade-page px-0 py-2">FAQ</a>
+                        </li>
+                        <li class="nav-item mr-3 mr-md-0">
+                            <a href="#" class="nav-link fade-page px-0 py-2">Contact Us</a>
+                        </li>
+                        <li class="nav-item mr-3 mr-md-0">
+                            <a href="https://twitter.com/UpCheckCo" class="nav-link fade-page px-0 py-2" target="_blank">
+                                <i class="fab fa-twitter fa-fw">&nbsp;</i> Twitter</a>
+                        </li>
+                        <li class="nav-item mr-3 mr-md-0">
+                            <a href="http://facebook.com/UpCheckCo" class="nav-link fade-page px-0 py-2" target="_blank">
+                                <i class="fab fa-facebook-f fa-fw">&nbsp;&nbsp;</i> Facebook</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xl-auto mr-xl-5 col-md-3">
+                    <h5>Developers</h5>
+                    <ul class="nav flex-row flex-md-column">
+                        <li class="nav-item mr-3 mr-md-0">
+                            <a href="#" class="nav-link fade-page px-0 py-2">API</a>
+                        </li>
+                        <li class="nav-item mr-3 mr-md-0">
+                            <a href="#" class="nav-link fade-page px-0 py-2">Webhooks</a>
+                        </li>
+                        <li class="nav-item mr-3 mr-md-0">
+                            <a href="#" class="nav-link fade-page px-0 py-2">Latency Test</a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <!--end of row-->
         </div>
-        <!--end of container-->
-    </section>
+    </footer>
+    <a href="#top" class="btn btn-primary rounded-circle btn-back-to-top" data-smooth-scroll data-aos="fade-up"
+       data-aos-offset="2000" data-aos-mirror="true" data-aos-once="false">
+        <i class="fas fa-chevron-up" fa-fw></i>
+    </a>
 @stop
