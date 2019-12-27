@@ -1,21 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-light" data-sticky="top">
     <div class="container">
-        <a class="navbar-brand fade-page" href="index.html">
-            <img alt="Jumpstart" src="https://res.cloudinary.com/upcheck/image/upload/v1577380021/logos/text-logo-2_bhcncr.png" height="30px">
+        <a class="navbar-brand fade-page" href="{{ route('home') }}">
+            <img alt="UpCheck" src="https://res.cloudinary.com/upcheck/image/upload/v1577380021/logos/text-logo-2_bhcncr.png" height="30px">
         </a>
-        <div class="d-flex align-items-center order-lg-3">
-            <a href="{{ route('register') }}"
-               class="btn btn-primary ml-lg-4 mr-3 mr-md-4 mr-lg-0 d-none d-sm-block">Register</a>
-            <a href="{{ route('login') }}"
-               class="btn btn-info ml-lg-4 mr-3 mr-md-4 mr-lg-0 d-none d-sm-block">Login</a>
-            <button aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
-                    data-target=".navbar-collapse" data-toggle="collapse" type="button">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
         <div class="collapse navbar-collapse order-3 order-lg-2 justify-content-lg-end" id="navigation-menu">
             <ul class="navbar-nav my-3 my-lg-0">
-                <li class="nav-item active">
+                <li class="nav-item {{ (request()->is('/')) ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('home') }}">Home</a>
                 </li>
 
@@ -55,6 +45,17 @@
                     <a class="nav-link" href="#">Support</a>
                 </li>
             </ul>
+        </div>
+
+        <div class="d-flex align-items-center order-lg-3">
+            <a href="{{ route('register') }}"
+               class="btn btn-primary ml-lg-4 mr-3 mr-md-4 mr-lg-0 d-none d-sm-block">Register</a>
+            <a href="{{ route('login') }}"
+               class="btn btn-info ml-lg-4 mr-3 mr-md-4 mr-lg-0 d-none d-sm-block">Login</a>
+            <button aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+                    data-target=".navbar-collapse" data-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
         </div>
     </div>
 </nav>

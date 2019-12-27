@@ -11,7 +11,24 @@
 |
 */
 
+// Home Pages
 Route::get('/', 'HomeController@home')->name('home');
+
+Route::get('privacy', function () {
+    return view('home-pages.privacypolicy');
+})->name('privacypolicy');
+
+Route::get('cookies', function () {
+    return view('home-pages.cookiepolicy');
+})->name('cookiepolicy');
+
+Route::get('terms', function () {
+    return view('home-pages.termsofservice');
+})->name('terms');
+
+Route::get('pricing', function () {
+    return view('home-pages.pricing');
+})->name('pricing');
 
 Auth::routes();
 
