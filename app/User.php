@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'phone', 'phone_verified', 'password',
+        'name', 'email', 'phone', 'phone_verified', 'password', 'api_token',
     ];
 
     /**
@@ -29,7 +29,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'api_token',
     ];
 
     /**
@@ -47,6 +47,14 @@ class User extends Authenticatable
     public function monitors()
     {
         return $this->hasMany('App\Monitor');
+    }
+
+    /**
+     * Get the servers for the user.
+     */
+    public function servers()
+    {
+        return $this->hasMany('App\Server');
     }
 
     /**

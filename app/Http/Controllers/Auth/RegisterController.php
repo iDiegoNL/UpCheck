@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Clarkeash\Doorman\Validation\DoormanRule;
 use Doorman;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -56,6 +57,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'code' => ['required', new DoormanRule($data['email'])],
             'password' => ['required', 'string', 'min:8'],
+            'api_token' => Str::random(60),
         ]);
     }
 

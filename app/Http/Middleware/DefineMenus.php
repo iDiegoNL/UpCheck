@@ -21,9 +21,11 @@ class DefineMenus
             $menu->add('Home', 'dashboard')
                 ->prepend('<i class="far fa-home"></i> ');
             $menu->add('Monitors', 'monitors')
+                ->prepend('<i class="far fa-browser"></i> ');
+            $menu->add('Servers', 'servers')
                 ->prepend('<i class="far fa-server"></i> ');
             $menu->add('Status Pages', 'monitors')
-                ->prepend('<i class="far fa-browser"></i> ');
+                ->prepend('<i class="far fa-check-circle"></i> ');
             $menu->add('Admin', 'admin/users')
                 ->prepend('<i class="far fa-crown"></i> ');
         });

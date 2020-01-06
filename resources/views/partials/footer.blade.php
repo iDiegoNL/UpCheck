@@ -20,7 +20,7 @@
                         <a href="#" class="nav-link fade-page px-0 py-2">Broken Link Monitoring</a>
                     </li>
                     <li class="nav-item mr-3 mr-md-0">
-                        <a href="#" class="nav-link fade-page px-0 py-2">Pricing</a>
+                        <a href="{{ route('pricing') }}" class="nav-link fade-page px-0 py-2">Pricing</a>
                     </li>
                 </ul>
             </div>

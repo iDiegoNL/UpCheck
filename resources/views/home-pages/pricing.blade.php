@@ -5,8 +5,8 @@
             <div class="container">
                 <div class="row text-center justify-content-center">
                     <div class="col">
-                        <h1 class="display-3">Pricing that <mark data-aos="highlight-text" data-aos-delay="200" class="aos-init aos-animate">scales with
-                                you</mark></h1>
+                        <h1 class="display-3">
+                            Find the <mark data-aos="highlight-text" data-aos-delay="200" class="aos-init aos-animate">perfect subscription</mark></h1>
                     </div>
                 </div>
                 <div class="row text-center justify-content-center">
@@ -28,7 +28,7 @@
                     <div class="card card-body align-items-center shadow">
 
                         <div class="text-center mb-4">
-                            <h4>Developer</h4>
+                            <h4>Developer or small company</h4>
                             <div class="d-flex align-items-center justify-content-center mb-1">
                                 <span class="h5 mb-0 mr-2">&euro;</span>
                                 <span class="display-3 mb-0 text-dark">0</span>
@@ -96,7 +96,7 @@
                     <div class="card card-body align-items-center shadow">
                         <div class="badge badge-success badge-pill mb-4">Best Value</div>
                         <div class="text-center mb-4">
-                            <h4>Small company</h4>
+                            <h4>Medium company</h4>
                             <div class="d-flex align-items-center justify-content-center mb-1">
                                 <span class="h5 mb-0 mr-2">$</span>
                                 <span class="display-3 mb-0 text-dark">29</span>
@@ -163,7 +163,7 @@
                     <div class="card card-body align-items-center shadow">
 
                         <div class="text-center mb-4">
-                            <h4>Medium company</h4>
+                            <h4>Large company</h4>
                             <div class="d-flex align-items-center justify-content-center mb-1">
                                 <span class="h5 mb-0 mr-2">$</span>
                                 <span class="display-3 mb-0 text-dark">79</span>
@@ -228,7 +228,8 @@
             </div>
             <div class="row justify-content-center mt-4 mt-md-5">
                 <div class="col-auto">
-                    <div class="alert bg-secondary">Do you require a custom plan? <a href="#">Get in touch</a>
+                    <div class="alert bg-secondary">
+                        Do you require a custom plan? <a href="#">Get in touch</a>
                     </div>
                 </div>
             </div>
@@ -306,7 +307,7 @@
         <div class="container">
             <div class="row section-title justify-content-center text-center">
                 <div class="col-md-9 col-lg-8 col-xl-7">
-                    <h3 class="display-4">FAQ</h3>
+                    <h3 class="display-4">Frequently Asked Questions</h3>
                     <div class="lead">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa.</div>
                 </div>
             </div>
