@@ -107,7 +107,8 @@ class LoginController extends Controller
      */
     public function redirectToProvider($provider)
     {
-        return Socialite::driver($provider)->redirect();
+        echo 'Authentication with social accounts has been disabled until we are open to the public. Please login using your email and password.';
+        // return Socialite::driver($provider)->redirect();
     }
 
     /**
