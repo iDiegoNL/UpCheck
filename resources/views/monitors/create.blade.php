@@ -44,6 +44,15 @@
                     Create new monitor
                 </h3>
             </div>
+            <div class="alert alert-icon alert-primary alert-disabled" role="alert">
+                <button data-dismiss="alert" class="close" aria-label="Dismiss Alert"></button>
+                <i class="far fa-info-circle fa-fw fa-xs"></i>
+                <strong>Are you using Cloudflare?</strong>
+                <br>
+                Please add the origin IP of your server instead of the domain name.
+                <br>
+                Otherwise, downtime might not be monitored correctly.
+            </div>
             @csrf
             <div class="card-body">
                 <div class="row">
@@ -90,7 +99,8 @@
                                 });
                             </script>
                             <label class="form-label">Interval</label>
-                            <select class="form-control custom-select interval-select" name="interval" id="interval" disabled>
+                            <select class="form-control custom-select interval-select" name="interval" id="interval"
+                                    disabled>
                                 <option value="1">1 Minute</option>
                                 <option value="5" selected>5 Minutes</option>
                                 <option value="15">15 Minutes</option>
@@ -138,14 +148,14 @@
                             <select class="form-control custom-select type-select" name="category"
                                     id="category">
                                 <!-- <optgroup label="Computers"> -->
-                                    <option value="server" selected>Server (default)</option>
-                                    <option value="database">Database</option>
-                                    <option value="ethernet">Ethernet</option>
-                                    <option value="hdd">Storage</option>
-                                    <option value="print">Printer</option>
-                                    <option value="envelope">Email</option>
-                                    <option value="gamepad">Game</option>
-                            <!-- </optgroup> -->
+                                <option value="server" selected>Server (default)</option>
+                                <option value="database">Database</option>
+                                <option value="ethernet">Ethernet</option>
+                                <option value="hdd">Storage</option>
+                                <option value="print">Printer</option>
+                                <option value="envelope">Email</option>
+                                <option value="gamepad">Game</option>
+                                <!-- </optgroup> -->
                             </select>
                         </div>
                     </div>

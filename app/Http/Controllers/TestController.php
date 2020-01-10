@@ -13,6 +13,7 @@ use App\Jobs\CheckPingTimes;
 use Carbon\Carbon;
 use JJG\Ping as JJGPing;
 use Auth;
+use App\Jobs\CheckCloudflareBlacklist;
 
 class TestController extends Controller
 {
@@ -46,10 +47,8 @@ class TestController extends Controller
 
     public function test()
     {
-        if (Auth::check() && Auth::user()->name == 'Diego Relyveld') {
-            $now = Carbon::now();
-
-            echo $now->timezone;
+        if (Auth::check() && Auth::user()->name == 'Diego') {
+            CheckCloudflareBlacklist::dispatchNow();
         } else {
             abort(404);
         }

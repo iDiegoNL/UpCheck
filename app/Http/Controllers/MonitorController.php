@@ -6,10 +6,12 @@ use App\Monitor;
 use App\Ping;
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Auth;
 use App\Charts\MonitorLatency;
 use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\DB;
 
 class MonitorController extends Controller
@@ -50,7 +52,7 @@ class MonitorController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return Response
+     * @return RedirectResponse|Redirector|void
      */
     public function store(Request $request)
     {
@@ -93,18 +95,35 @@ class MonitorController extends Controller
      */
     public function show(Monitor $monitor)
     {
+        // Get all response times from today
         $ms = Ping::where('monitor_id', $monitor->id)->whereDate('created_at', Carbon::today())->pluck('ms');
-        // TODO: Doesn't work, shows letters T and Z in timestamp.
-        // $labels = Ping::where('monitor_id', $monitor->id)->pluck('created_at');
+        // Create the labels for the ping graph
+        // TODO: Figure out why the code below doesn't work, shows letters T and Z in timestamp.
+        // TODO: $labels = Ping::where('monitor_id', $monitor->id)->pluck('created_at');
         // Temp fix: skip the model usage for now.
         $labels = DB::table('pings')->where('monitor_id', $monitor->id)->whereDate('created_at', Carbon::today())->pluck('created_at');
-
+        // Get the date for the graph header
+        // TODO: What the hell is going on here?
         $date = Carbon::parse(Ping::where('monitor_id', $monitor->id)->whereDate('created_at', Carbon::today())->latest()->value('created_at'))->toFormattedDateString();
 
+        // Initialize the chart with the correct labels & datasets
         $chart = new MonitorLatency;
         $chart->labels($labels);
         $chart->dataset('Response times in ms', 'line', $ms);
 
+        // Check if the monitor uses a Cloudflare IP and show an alert if it does
+        // TODO: Save this data in the database and check for changes weekly
+        // Get the IP list in plaintext from Cloudflare. They don't have an API for this yet
+        // TODO: Use cURL
+        $cloudflare_ip_list = file_get_contents('https://www.cloudflare.com/ips-v4');
+        // Convert the text file to an array, using newline as a delimiter.
+        $cloudflare_ip_list = explode("\n", $cloudflare_ip_list);
+
+        if (in_array($monitor->ip, $cloudflare_ip_list)) {
+            echo 'aaa';
+        }
+
+        // Return the view with the data
         return view('monitors.show', $monitor, compact('chart', 'date'));
     }
 

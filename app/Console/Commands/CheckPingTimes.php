@@ -50,7 +50,7 @@ class CheckPingTimes extends Command
             }
             else {
                 // $lastPing retrieves the latest ping for the monitor.
-                $lastPing = Carbon::parse(Ping::where('monitor_id', $monitor->id)->latest()->value('created_at'));
+                $lastPing = Carbon::parse(Ping::query()->where('monitor_id', $monitor->id)->latest()->value('created_at'));
 
                 // $interval is the time now minus the interval in minutes.
                 $interval = Carbon::now()->subMinutes($monitor->interval);
