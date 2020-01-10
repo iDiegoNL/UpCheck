@@ -111,18 +111,6 @@ class MonitorController extends Controller
         $chart->labels($labels);
         $chart->dataset('Response times in ms', 'line', $ms);
 
-        // Check if the monitor uses a Cloudflare IP and show an alert if it does
-        // TODO: Save this data in the database and check for changes weekly
-        // Get the IP list in plaintext from Cloudflare. They don't have an API for this yet
-        // TODO: Use cURL
-        $cloudflare_ip_list = file_get_contents('https://www.cloudflare.com/ips-v4');
-        // Convert the text file to an array, using newline as a delimiter.
-        $cloudflare_ip_list = explode("\n", $cloudflare_ip_list);
-
-        if (in_array($monitor->ip, $cloudflare_ip_list)) {
-            echo 'aaa';
-        }
-
         // Return the view with the data
         return view('monitors.show', $monitor, compact('chart', 'date'));
     }

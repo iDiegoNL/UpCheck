@@ -1,9 +1,5 @@
 @extends('tabler::layouts.main')
 @section('title', 'UpCheck')
-@push('styles')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretty-checkbox/3.0.0/pretty-checkbox.min.css"
-          integrity="sha256-KCHcsGm2E36dSODOtMCcBadNAbEUW5m+1xLId7xgLmw=" crossorigin="anonymous"/>
-@endpush
 @section('content')
     <div class="row row-cards">
         @include('auth.settings.partials.menu')

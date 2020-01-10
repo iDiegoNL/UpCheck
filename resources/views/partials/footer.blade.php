@@ -90,5 +90,5 @@
 
 <a href="#top" class="btn btn-primary rounded-circle btn-back-to-top" data-smooth-scroll data-aos="fade-up"
    data-aos-offset="2000" data-aos-mirror="true" data-aos-once="false">
-    <i class="fas fa-chevron-up" fa-fw></i>
+    <i class="fas fa-chevron-up fa-fw"></i>
 </a>

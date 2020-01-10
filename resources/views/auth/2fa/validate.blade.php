@@ -3,7 +3,7 @@
     <div class="img-holder">
         <div class="bg"></div>
         <div class="info-holder">
-            <img src="{{ asset('images/graphics/sign-in.png') }}" alt="">
+            <img src="https://res.cloudinary.com/upcheck/image/upload/v1577379993/graphics/sign-in_a8v6gp.png" alt="">
         </div>
     </div>
     <div class="form-holder">

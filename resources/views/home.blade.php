@@ -28,37 +28,6 @@
             </div>
         </div>
     </section>
-    <section class="bg-light pb-0 pt-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-auto">
-                    <ul class="list-unstyled d-flex flex-wrap justify-content-center mb-0">
-                        <li class="my-3 mx-3 mx-lg-4">
-                            <img src="assets/img/logos/brand/aven.svg" alt="Aven company logo" class="opacity-50"
-                                 data-inject-svg>
-                        </li>
-                        <li class="my-3 mx-3 mx-lg-4">
-                            <img src="assets/img/logos/brand/asgardia.svg" alt="Asgardia company logo" class="opacity-50"
-                                 data-inject-svg>
-                        </li>
-                        <li class="my-3 mx-3 mx-lg-4">
-                            <img src="assets/img/logos/brand/kanba.svg" alt="Kanba company logo" class="opacity-50"
-                                 data-inject-svg>
-                        </li>
-                        <li class="my-3 mx-3 mx-lg-4">
-                            <img src="assets/img/logos/brand/treva.svg" alt="Treva company logo" class="opacity-50"
-                                 data-inject-svg>
-                        </li>
-                        <li class="my-3 mx-3 mx-lg-4">
-                            <img src="assets/img/logos/brand/ztos.svg" alt="Ztos company logo" class="opacity-50"
-                                 data-inject-svg>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="divider divider-bottom bg-white mt-5"></div>
-    </section>
     <section class="o-hidden">
         <div class="container">
             <div class="row align-items-center justify-content-around text-center text-lg-left">

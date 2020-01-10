@@ -14,7 +14,7 @@
     <!-- Schema.org markup for Google+ -->
     <meta itemprop="name" content="UpCheck | Uptime Monitoring">
     <meta itemprop="description" content="UpCheck provides easy to use and reliable monitoring for all your services.">
-    <meta itemprop="image" content="{{ asset('images/logos/1500x1500.png') }}">
+    <meta itemprop="image" content="https://res.cloudinary.com/upcheck/image/upload/v1577380022/logos/1500x1500_re7ghd.png">
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary_large_image">
@@ -22,14 +22,14 @@
     <meta name="twitter:title" content="UpCheck | Uptime Monitoring">
     <meta name="twitter:description"
           content="UpCheck provides easy to use and reliable monitoring for all your services.">
-    <meta name="twitter:creator" content="@author_handle">
-    <meta name="twitter:image:src" content="{{ asset('images/logos/1500x1500.png') }}">
+    <meta name="twitter:creator" content="@UpCheckCo">
+    <meta name="twitter:image:src" content="https://res.cloudinary.com/upcheck/image/upload/v1577380022/logos/1500x1500_re7ghd.png">
 
     <!-- Open Graph data -->
     <meta property="og:title" content="UpCheck | Uptime Monitoring"/>
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="https://upcheck.co"/>
-    <meta property="og:image" content="{{ asset('images/logos/1500x1500.png') }}"/>
+    <meta property="og:image" content="https://res.cloudinary.com/upcheck/image/upload/v1577380022/logos/1500x1500_re7ghd.png"/>
     <meta property="og:description"
           content="UpCheck provides easy to use and reliable monitoring for all your services."/>
     <meta property="og:site_name" content="UpCheck"/>
@@ -41,14 +41,14 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-touch-fullscreen" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="white">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicons/apple-touch-icon.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicons/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicons/favicon-16x16.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/upcheck/image/upload/v1578685065/favicons/apple-touch-icon_mypvrg.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/upcheck/image/upload/v1578685064/favicons/favicon-32x32_hmfx9l.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/upcheck/image/upload/v1578685064/favicons/favicon-16x16_rihtnc.png">
     <link rel="manifest" href="{{ asset('site.webmanifest') }}">
-    <link rel="mask-icon" href="{{ asset('favicons/safari-pinned-tab.svg') }}" color="#5bbad5">
-    <link rel="shortcut icon" href="{{ asset('favicons/favicon.ico') }}">
+    <link rel="mask-icon" href="https://res.cloudinary.com/upcheck/image/upload/v1578685064/favicons/safari-pinned-tab_pltfle.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="https://res.cloudinary.com/upcheck/image/upload/v1578685064/favicons/favicon_hntq46.ico">
     <meta name="msapplication-TileColor" content="#2d89ef">
-    <meta name="msapplication-TileImage" content="{{ asset('favicons/mstile-144x144.png') }}">
+    <meta name="msapplication-TileImage" content="https://res.cloudinary.com/upcheck/image/upload/v1578685065/favicons/mstile-144x144_b7ikpw.png">
     <meta name="msapplication-config" content="{{ asset('browserconfig.xml') }}">
     <meta name="theme-color" content="#ffffff">
 @include('googletagmanager::head')

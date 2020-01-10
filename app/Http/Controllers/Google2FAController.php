@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Crypt;
 use Exception;
 use Google2FA;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 use \ParagonIE\ConstantTime\Base32;
 
 class Google2FAController extends Controller
@@ -58,7 +60,7 @@ class Google2FAController extends Controller
     /**
      *
      * @param Request $request
-     * @return Response
+     * @return RedirectResponse|Redirector|void
      */
     public function disableTwoFactor(Request $request)
     {
