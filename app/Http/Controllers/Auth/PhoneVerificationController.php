@@ -83,7 +83,6 @@ class PhoneVerificationController extends Controller
         // Call the method responsible for checking the verification code sent.
         $response = $this->authy->phoneVerificationCheck(PhoneNumber::parse(Auth::user()->phone)->getNationalNumber(), PhoneNumber::parse(Auth::user()->phone)->getCountryCode(), $request->code);
         if ($response->ok()) {
-
             $user = User::find(Auth::id());
             $user->phone_verified = true;
             $user->save();

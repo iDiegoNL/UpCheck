@@ -54,7 +54,8 @@ class TwilioController extends Controller
         }
     }
 
-    public function sendSMS(Request $request) {
+    public function sendSMS(Request $request)
+    {
         // Validate User input from form.
         $this->validate($request, [
             'phone' => 'required|string',
@@ -65,19 +66,20 @@ class TwilioController extends Controller
         $client = new Client($this->sid, $this->authToken);
 
         try {
-            $sms = $client->messages->create($request->phone,
+            $sms = $client->messages->create(
+                $request->phone,
                 [
                     'from' => $this->twilioFrom,
                     'body' => $request->message
                 ]
             );
 
-            if($sms) {
+            if ($sms) {
                 return redirect()->back()->with('success', 'SMS sent successfully');
             } else {
                 return redirect()->back()->with('error', 'SMS failed!');
             }
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             echo 'Error: ' . $e->getMessage();
         }
     }

@@ -45,12 +45,11 @@ class CheckPingTimes extends Command
 
         foreach ($monitors as $monitor) {
             // If the monitor is new and has zero previous pings, dispatch the ping.
-            if (Ping::where('monitor_id', $monitor->id)->count() == 0) {
-                PingMonitor::dispatch($monitor->id);
-            }
-            else {
-                // $lastPing retrieves the latest ping for the monitor.
-                $lastPing = Carbon::parse(Ping::query()->where('monitor_id', $monitor->id)->latest()->value('created_at'));
+            if (Monitor::findOrFail($monitor->id)->pings->count() == 0) {
+                return PingMonitor::dispatch($monitor->id);
+            } else {
+                // Get the most recent ping for the monitor.
+                $lastPing = Ping::where('monitor_id', 1)->latest()->value('created_at');
 
                 // $interval is the time now minus the interval in minutes.
                 $interval = Carbon::now()->subMinutes($monitor->interval);

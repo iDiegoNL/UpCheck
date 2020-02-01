@@ -71,13 +71,15 @@ class User extends Authenticatable
             ->add('user.json', ['name' => $this->name, 'email' => $this->email, 'phone' => $this->phone, 'created_at', $this->created_at, 'updated_at', $this->updated_at]);
     }
 
-    public function personalDataExportName(string $realFilename): string {
+    public function personalDataExportName(string $realFilename): string
+    {
         $userName = Str::slug($this->name);
 
         return "personal-data-{$userName}.zip";
     }
 
-    public function identities() {
+    public function identities()
+    {
         return $this->hasMany('App\SocialIdentity');
     }
 }

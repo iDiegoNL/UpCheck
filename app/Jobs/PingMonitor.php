@@ -14,18 +14,25 @@ use App\Ping;
 
 /**
  * Class PingMonitor
+ *
  * @package App\Jobs
  */
 class PingMonitor implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
+    /**
+     * @var Monitor
+     */
     protected $monitor;
 
     /**
      * Create a new job instance.
      *
-     * @param Monitor $monitor
+     * @param  Monitor $monitor
      * @return void
      */
     public function __construct($monitor)
@@ -36,8 +43,7 @@ class PingMonitor implements ShouldQueue
     /**
      * Execute the job.
      *
-     * @param Monitor $monitor
-     * @return void
+     * @retumaarn void
      * @throws Exception
      */
     public function handle()
@@ -75,11 +81,13 @@ class PingMonitor implements ShouldQueue
             if (Monitor::find($monitor->id)->value('status') == 'offline') {
             }
             // Store the ping in the database.
-            Ping::create([
+            Ping::create(
+                [
                 'monitor_id' => $monitor->id,
                 'user_id' => $monitor->user_id,
                 'ms' => $average
-            ]);
+                ]
+            );
             // Set the status of the monitor to online
             Monitor::where('id', $monitor->id)
                 ->update(['status' => 'online']);
@@ -88,11 +96,13 @@ class PingMonitor implements ShouldQueue
             Monitor::where('id', $monitor->id)
                 ->update(['status' => 'offline']);
             // Create a new row for this ping in our DB.
-            Ping::create([
+            Ping::create(
+                [
                 'monitor_id' => $monitor->id,
                 'user_id' => $monitor->user_id,
                 'ms' => 0
-            ]);
+                ]
+            );
             // If the last ping was successful (online)
             if (Monitor::find($monitor->id)->value('status') == 'online') {
                 // Send a notification that the monitor has gone offline (soonTM)

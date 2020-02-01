@@ -11,57 +11,51 @@ class MonitorOffline extends Notification
 {
     use Queueable;
 
-    private $monitor;
-
     /**
      * Create a new notification instance.
      *
-     * @param $monitor
+     * @return void
      */
-    public function __construct($monitor)
+    public function __construct()
     {
-        $this->monitor = $monitor;
+        //
     }
 
     /**
      * Get the notification's delivery channels.
      *
-     * @param mixed $notifiable
+     * @param  mixed  $notifiable
      * @return array
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['mail'];
     }
 
     /**
      * Get the mail representation of the notification.
      *
-     * @param mixed $notifiable
+     * @param  mixed  $notifiable
      * @return MailMessage
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-            ->subject('Monitor offline: ' . $this->monitor['name'])
-            ->level('error')
-            ->line('Your monitor <b>' . $this->monitor['name'] . '</b> is currently offline.')
-            ->line("We will notify you when anything changes.")
-            ->action('View monitor', route('monitors.show', $this->monitor['id']))
-            ->line('Thank you for using UpCheck!');
+        return (new MailMessage())
+                    ->line('The introduction to the notification.')
+                    ->action('Notification Action', url('/'))
+                    ->line('Thank you for using our application!');
     }
 
     /**
      * Get the array representation of the notification.
      *
-     * @param mixed $notifiable
+     * @param  mixed  $notifiable
      * @return array
      */
     public function toArray($notifiable)
     {
         return [
-            'name' => $this->monitor['name'],
-            'id' => $this->monitor['id'],
+            //
         ];
     }
 }

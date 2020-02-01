@@ -48,4 +48,12 @@ class Monitor extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    /**
+     * Get the pings for the monitor.
+     */
+    public function pings()
+    {
+        return $this->hasMany('App\Ping');
+    }
 }

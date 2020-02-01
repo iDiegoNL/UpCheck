@@ -51,19 +51,22 @@ class MonitorController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param  Request $request
      * @return RedirectResponse|Redirector|void
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $request->validate(
+            [
             'name' => 'required|string|min:2|max:255',
             'domain' => 'required_without:ip|max:253',
             'ip' => 'required_without:domain|ipv4|max:255',
             'category' => 'required|max:16',
-        ]);
+            ]
+        );
 
-        $monitor = Monitor::create([
+        $monitor = Monitor::create(
+            [
             'user_id' => Auth::id(),
             'name' => $request->name,
             'domain' => $request->domain,
@@ -71,7 +74,8 @@ class MonitorController extends Controller
             'interval' => 5,
             'ip' => $request->ip,
             'category' => $request->category
-        ]);
+            ]
+        );
 
         return redirect(route('monitors.show', $monitor->id));
     }
@@ -79,7 +83,7 @@ class MonitorController extends Controller
     /**
      * Search for a resource.
      *
-     * @param Request $request
+     * @param  Request $request
      * @return Response
      */
     public function search(Request $request)
@@ -90,13 +94,15 @@ class MonitorController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param Monitor $monitor
+     * @param  Monitor $monitor
      * @return Response
      */
     public function show(Monitor $monitor)
     {
         // Get all response times from today
-        $ms = Ping::where('monitor_id', $monitor->id)->whereDate('created_at', Carbon::today())->pluck('ms');
+        $ms = Ping::where('monitor_id', $monitor->id)
+            ->whereDate('created_at', Carbon::today())
+            ->pluck('ms');
         // Create the labels for the ping graph
         // TODO: Figure out why the code below doesn't work, shows letters T and Z in timestamp.
         // TODO: $labels = Ping::where('monitor_id', $monitor->id)->pluck('created_at');
@@ -118,7 +124,7 @@ class MonitorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Monitor $monitor
+     * @param  Monitor $monitor
      * @return Response
      */
     public function edit(Monitor $monitor)
@@ -129,18 +135,20 @@ class MonitorController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param Monitor $monitor
+     * @param  Request $request
+     * @param  Monitor $monitor
      * @return Response
      */
     public function update(Request $request, Monitor $monitor)
     {
-        $request->validate([
+        $request->validate(
+            [
             'name' => 'required|string|min:2|max:255',
             'domain' => 'required_without:ip|max:253',
             'ip' => 'required_without:domain|ipv4|max:255',
             'category' => 'required|max:16',
-        ]);
+            ]
+        );
 
         $monitor = Monitor::find($monitor->id);
 
@@ -157,7 +165,7 @@ class MonitorController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Monitor $monitor
+     * @param  Monitor $monitor
      * @return Response
      */
     public function indexAlerts(Monitor $monitor)
@@ -168,7 +176,7 @@ class MonitorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Monitor $monitor
+     * @param  Monitor $monitor
      * @return Response
      */
     public function destroy(Monitor $monitor)
