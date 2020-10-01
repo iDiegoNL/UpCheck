@@ -3,7 +3,7 @@
 
 # About UpCheck
 
-UpCheck provides easy to use and reliable monitoring for all your services.
+UpCheck.co provides easy to use and reliable monitoring for all your services.
 
 
 ## About this project *(please read)*
