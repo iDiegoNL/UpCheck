@@ -1,6 +1,8 @@
 <p align="center"><img src="https://res.cloudinary.com/upcheck/image/upload/c_scale,h_50/v1577380021/logos/text-logo-2_bhcncr.png"></p>
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
+<h3 align="center">UpCheck<small> by DiegoR</small></h3>
+
 # About UpCheck
 
 UpCheck.co provides easy to use and reliable monitoring for all your services.
